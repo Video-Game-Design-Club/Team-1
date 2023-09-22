@@ -1,0 +1,16 @@
+Requirements:
+
+- change to arbitrary size (just in case)
+- take click events
+- hold gameobjects
+- interact with enemy ai & gameloop
+- show with sprites
+
+Implementation:
+
+- Grid Manager object with flat collider
+    - changes size depending on grid size
+    - also handles API requests for moving/adding/removing objects
+    - API requests to test for other things in the grid
+    - Interface for grid object? Could also just use game object reference
+    
