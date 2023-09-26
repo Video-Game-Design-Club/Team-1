@@ -42,9 +42,4 @@ public class MouseCast : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         return Physics.Raycast(ray, out hit, cam.farClipPlane, mask);
     }
-
-    private Vector3 GetMouseWorldPosition(Vector2 position) { //converts screen space to world space
-        Vector3 pos3D = new Vector3(position.x, position.y, 5.0f);
-        return cam.ScreenToWorldPoint(pos3D);
-    }
 }

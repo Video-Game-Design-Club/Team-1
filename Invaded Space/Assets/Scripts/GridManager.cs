@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System.Transactions;
 
 /**
 This class is responsible for handling all the grid square sprites, click events on the grid,
@@ -104,6 +105,16 @@ public class GridManager : MonoBehaviour
             Vector2Int coords = LocalPosToSquare(localPos);
             highlightedSquare = gridSprites[coords.x,coords.y];
             highlightedSquare.color = squareColorHighlight;
+
+            if (Input.GetMouseButtonDown(0)){//try to place
+                Transform ho = MouseHold.instance.GetHeldObject();
+                if (ho != null && gridObjects[coords.x,coords.y] == null){
+                    gridObjects[coords.x,coords.y] = ho.gameObject;
+                    ho.transform.position = gridSprites[coords.x,coords.y].transform.position - Vector3.forward * 0.5f;
+                    ho.transform.parent = gridSprites[coords.x,coords.y].transform;
+                    MouseHold.instance.SetHeldObject(null);
+                }
+            }
         }
     }
 
